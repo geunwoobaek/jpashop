@@ -7,8 +7,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class JpashopApplication {
 
     public static void main(String[] args) {
-        Hello he=new Hello();
-        he.setData("fff");
+//        Hello he=new Hello();
+//        he.setData("fff");
         SpringApplication.run(JpashopApplication.class, args);
     }
 
