@@ -12,6 +12,7 @@ import java.util.List;
 public class Member {
 @Id @GeneratedValue @Column(name="member_id")
 private Long id;
+String username;
 @Embedded
 private Address address;
 
