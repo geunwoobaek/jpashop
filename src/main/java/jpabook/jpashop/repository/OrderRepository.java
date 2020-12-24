@@ -25,6 +25,7 @@ public class OrderRepository {
     public Order findOne(Long id){
         return em.find(Order.class,id);
     }
+    public List<Order> findAll(){return em.createQuery("select o from Order o",Order.class).getResultList();}
     public List<Order> findAllByCriteria(OrderSearch orderSearch) {
         CriteriaBuilder cb = em.getCriteriaBuilder();
         CriteriaQuery<Order> cq = cb.createQuery(Order.class);
@@ -49,4 +50,9 @@ public class OrderRepository {
         return query.getResultList();
     }
 
+    public List<Order> findAllWithMemberDelivery() {
+        return em.createQuery("select o from Order o" +
+                " join fetch o.member m" +
+                " join fetch o.delivery d", Order.class).getResultList();
+    }
 }

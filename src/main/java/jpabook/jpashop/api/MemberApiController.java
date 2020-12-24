@@ -28,7 +28,8 @@ public class MemberApiController {
  * - API 요청 스펙에 맞추어 별도의 DTO를 파라미터로 받는다.
  */
     @PostMapping("api/v1/members")
-    public CreateMemberResponse RegisterMemberByApi (@RequestBody @Valid  Member member) throws IllegalAccessException {
+    public CreateMemberResponse saveMemberV1 (@RequestBody @Valid  Member member) throws IllegalAccessException {
+        System.out.println(member.getUsername());
         Long id = memberservice.join(member);
         return new CreateMemberResponse(id);
     }
@@ -77,13 +78,15 @@ public class MemberApiController {
         private T Data;
     }
     @Data
-    @AllArgsConstructor
     public class CreateMemberResponse {
         Long id;
+        public CreateMemberResponse(Long id) {
+            this.id = id;
+        }
     }
     @Data
-    public class CreateMemberRequest {
-        String name;
+    public static class CreateMemberRequest {
+        private String name;
     }
 
 
