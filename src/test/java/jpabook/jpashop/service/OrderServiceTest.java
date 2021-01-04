@@ -49,7 +49,7 @@ public class OrderServiceTest {
         Item item=createBook("시골 Jpa",10000,10);
         int orderCount=2;
         Long orderId=orderService.order(member.getId(),item.getId(),orderCount);
-        orderService.cancelOredr(orderId);
+        orderService.cancelOrder(orderId);
         Order getOrder = orderRepository.findOne(orderId);
         assertEquals("주문 취소시 상태는 CANCEL 이다.",OrderStatus.CANCEL,
                 getOrder.getStatus());
